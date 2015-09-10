@@ -5,7 +5,7 @@ This docker files show how to build a super lightweight docker container to run 
 ## Docker instructions
 * Use the latest [Alpine Linux](https://hub.docker.com/_/alpine/) image
 * Install the necessary packages like curl wget tar libgcc openssl etc
-* Install glibc on Alpine Linux (_Alpine Linux uses musl_) needed to run utServer
+* [Install glibc on Alpine Linux](http://wiki.alpinelinux.org/wiki/Running_glibc_programs) (_Alpine Linux uses musl_) needed to run utServer
 * Install and setup utServer (optional, you can have the utServer mounted as external volume)
 * Setup the file with additional configuration
 	* All custom configuration goes into this file
