@@ -1,6 +1,6 @@
 ##################################################################################
 ## 
-## VERSION		:	0.0.2
+## VERSION		:	0.0.3
 ## DATE			:	30May2016
 ##                				
 ## USAGE		:	Dockerfile to build a super lightweight container to run uTorrent in Linux with mounted volumes for data storage
@@ -37,23 +37,16 @@ RUN ALPINE_GLIBC_BASE_URL="https://github.com/andyshinn/alpine-pkg-glibc/release
     /usr/glibc-compat/bin/localedef --force --inputfile POSIX --charmap UTF-8 C.UTF-8 || true && \
     echo "export LANG=C.UTF-8" > /etc/profile.d/locale.sh && \
     \
-    apk del glibc-i18n && \
-    \
-    apk del build-dependencies && \
     rm \
         "$ALPINE_GLIBC_BASE_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
         "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME" && \
-    \
+	\
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
-    apk del wget && \
+    apk del glibc-i18n build-dependencies wget && \
     rm -rf /var/cache/apk/* && \
     mkdir -p /opt/utorrent;
-		
-# Install necessary packages & Create sym link for libssl because the CentOS 6 has newer version than what uTorrent requires
-RUN ln -s /usr/lib/libssl.so.1.0.0 /usr/lib/libssl.so.0.9.8 && \
-    ln -s /usr/lib/libcrypto.so.1.0.0 /usr/lib/libcrypto.so.0.9.8
-
+	
 ENV LANG=C.UTF-8
 
 # Expose external connectivity port & the web interface
