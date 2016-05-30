@@ -1,6 +1,6 @@
 ##################################################################################
 ## 
-## VERSION		:	0.0.4
+## VERSION		:	0.0.5
 ## DATE			:	31May2016
 ##                				
 ## USAGE		:	Dockerfile to build a super lightweight container to run uTorrent in Linux with mounted volumes for data storage
@@ -14,14 +14,14 @@ MAINTAINER Mystique
 # Install the support packages
 # - Download & Install glibc (needed for utserver)
 # - Setup sym links, remove un-used packages, clean cachce, Setup up entry points
-RUN apk add --update curl wget tar libgcc openssl && \
+RUN apk add --update curl libgcc openssl && \
     curl -o glibc-2.21-r2.apk "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-2.21-r2.apk" && \
     apk add --allow-untrusted glibc-2.21-r2.apk && \
     curl -o glibc-bin-2.21-r2.apk "https://circle-artifacts.com/gh/andyshinn/alpine-pkg-glibc/6/artifacts/0/home/ubuntu/alpine-pkg-glibc/packages/x86_64/glibc-bin-2.21-r2.apk" && \
     apk add --allow-untrusted glibc-bin-2.21-r2.apk && \
     /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
-    apk del wget tar curl && \
+    apk del curl && \
     rm -rf glibc-2.21-r2.apk glibc-bin-2.21-r2.apk /var/cache/apk/* && \
     mkdir -p /opt/utorrent;
 
