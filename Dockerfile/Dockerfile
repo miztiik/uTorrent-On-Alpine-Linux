@@ -22,8 +22,7 @@ RUN apk add --update curl wget tar libgcc openssl && \
     /usr/glibc/usr/bin/ldconfig /lib /usr/glibc/usr/lib && \
     echo 'hosts: files mdns4_minimal [NOTFOUND=return] dns mdns4' >> /etc/nsswitch.conf && \
     apk del wget tar curl && \
-    rm -rf glibc-2.21-r2.apk glibc-bin-2.21-r2.apk && \
-    rm -rf /var/cache/apk/* && \
+    rm -rf glibc-2.21-r2.apk glibc-bin-2.21-r2.apk /var/cache/apk/* && \
     mkdir -p /opt/utorrent;
 
 # Install necessary packages & Create sym link for libssl because the CentOS 6 has newer version than what uTorrent requires
