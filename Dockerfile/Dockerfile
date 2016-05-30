@@ -1,7 +1,7 @@
 ##################################################################################
 ## 
-## VERSION		:	0.0.1
-## DATE			:	09Sep2015
+## VERSION		:	0.0.4
+## DATE			:	31May2016
 ##                				
 ## USAGE		:	Dockerfile to build a super lightweight container to run uTorrent in Linux with mounted volumes for data storage
 ## Ref [1]		:	https://github.com/miztiik/cloudera-On-Docker/blob/master/docker-image-build/uTor/centos/Dockerfile
