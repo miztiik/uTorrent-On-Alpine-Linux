@@ -55,7 +55,7 @@ docker run -dti --name rotnode \
 	            -v <Remote-torrent-directory>:<torrent-directory-inContainer> \ 
 	            mystique/alpine-rot:latest
 ```
-> Note : You can even have `/opt/utorrent` in the data volume and mount it during `docker run` to keep the `settings.dat` and `resume.dat` outside the container. This will allow you to destory and create new containers as ad when you need it. For example,
+> Note : You can even have `/opt/utorrent` in the data volume and mount it during `docker run` to keep the `settings.dat` and `resume.dat` outside the container. This will allow you to destory and create new containers as and when you need it. For example,
 ```
 docker run -dti --name rotnode \
 	            -p 28920:2891 \
